@@ -13,7 +13,7 @@ class ComposerStaticInitc05ac172a0187182401b5693374e3235
         ),
         'A' => 
         array (
-            'Admin\\MvcOop\\' => 13,
+            'App\\' => 4,
         ),
     );
 
@@ -22,7 +22,7 @@ class ComposerStaticInitc05ac172a0187182401b5693374e3235
         array (
             0 => __DIR__ . '/..' . '/phroute/phroute/src/Phroute',
         ),
-        'Admin\\MvcOop\\' => 
+        'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),

@@ -3,7 +3,7 @@
         'name' => 'admin/mvc_oop',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '1f2a96eec59274dcb687c89fc941e3a808cf5f54',
+        'reference' => '4d3ea952b6c15908ac5f2513409c237dcff8a92a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'admin/mvc_oop' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '1f2a96eec59274dcb687c89fc941e3a808cf5f54',
+            'reference' => '4d3ea952b6c15908ac5f2513409c237dcff8a92a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

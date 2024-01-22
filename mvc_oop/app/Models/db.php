@@ -1,4 +1,7 @@
 <?php
+namespace App\Models;
+
+use PDO;
 //khởi tạo class db để thực hiện kết nối CSDL
 class db {
     protected $servername="localhost";
@@ -9,10 +12,13 @@ class db {
     //tạo kế nối với CSDL
     public function getConnect() {
         $connect = new PDO(
-            "mysql:host=$this->servername;
-            dbname=$this->dbname;
-            $this->username;
-            $this->password"
+            //4 tham số truyền vào PDO
+            // "mysql:host=localhost;dbname=wd18316","root",""
+
+            "mysql:host=" . $this->servername //tương đương "mysql:host=localhost
+            . ";dbname=" . $this->dbname, //tương đương ;dbname=wd18316
+            $this->username,
+            $this->password
         );
 
         return $connect;
@@ -20,9 +26,9 @@ class db {
 
     //thực hiện câu truy vấn để lấy dữ liệu từ CSDL
     public function getData($query) {
-        $conn = $this->getConnect();
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
+        $conn = $this->getConnect(); //khởi tạo kết nối CSDL
+        $stmt = $conn->prepare($query); //
+        $stmt->execute(); //thực thi câu truy vấn
 
         return $stmt->fetchAll();
     }

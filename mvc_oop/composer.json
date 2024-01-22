@@ -3,7 +3,7 @@
     "description": "WD18316",
     "autoload": {
         "psr-4": {
-            "Admin\\MvcOop\\": "app/"
+            "App\\": "app/"
         }
     },
     "authors": [
