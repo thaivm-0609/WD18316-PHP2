@@ -24,13 +24,22 @@ class db {
         return $connect;
     }
 
-    //thực hiện câu truy vấn để lấy dữ liệu từ CSDL
+    //thực hiện câu truy vấn để lấy danh sách dữ liệu từ CSDL
     public function getData($query) {
         $conn = $this->getConnect(); //khởi tạo kết nối CSDL
         $stmt = $conn->prepare($query); //
         $stmt->execute(); //thực thi câu truy vấn
 
         return $stmt->fetchAll();
+    }
+
+    //lấy duy nhất 1 bản ghi theo ID
+    public function getDataById($query) {
+        $conn = $this->getConnect(); //khởi tạo kết nối CSDL
+        $stmt = $conn->prepare($query); //
+        $stmt->execute(); //thực thi câu truy vấn
+
+        return $stmt->fetch();
     }
 }
 

@@ -8,9 +8,15 @@ class Product extends db {
     protected $table="products";
 
     public function listProduct() {
-        $sql = "SELECT * FROM ". $this->table ." WHERE 1";
+        $sql = "SELECT * FROM ".$this->table." WHERE 1";
     
         return $this->getData($sql); //để 1 blank line (dòng trống) trước return
+    }
+
+    public function getById($id) {
+        $sql = "SELECT * FROM ".$this->table." WHERE id =".$id;
+    
+        return $this->getDataById($sql);
     }
 } 
 ?>

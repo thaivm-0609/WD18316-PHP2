@@ -1,5 +1,6 @@
 <?php
 use Phroute\Phroute\RouteCollector; 
+use App\Controllers\ProductController;
 
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 $router = new RouteCollector();
@@ -21,7 +22,7 @@ $router = new RouteCollector();
 $router->filter('auth', function(){
     if(!isset($_SESSION['user']))
     {
-        header('Location: /login');
+        header('Location: '.BASE_URL.'/login');
 
         return false;
     }
@@ -34,8 +35,13 @@ $router->filter('auth', function(){
  *  $handler = [Namespace\TênClass::class,function];
 */
 
-$router->get('/',[App\Controllers\ProductController::class, 'getAllProduct']);    # match only get requests
-$router->get('/top-10',[App\Controllers\ProductController::class, 'getTopTen']);
+$router->get('/',[ProductController::class,'getAllProduct']);    # match only get requests
+$router->get('/login', function () {
+    echo "đây là trang login";
+});
+$router->get('/products/{id}/edit', [ProductController::class,'edit']);
+$router->post('/products/{id}/update', [ProductController::class,'update']);
+$router->get('/top-10',[ProductController::class, 'getTopTen']);
 $router->get('/products', function() {
     echo "đây là danh sách product";
 });
@@ -47,11 +53,11 @@ $router->get('/comments', function() {
 });
 
 //route group để gom nhóm các route lại với nhau
-// $router->group(['before' => 'auth', 'prefix'=>'/admin'], function($router) {
-//     $router->get('/users',[App\Controllers\UserController::class, 'getAllUser']);
-//     $router->get('/products',[App\Controllers\UserController::class, 'getAllUser']);
-//     $router->get('/comments',[App\Controllers\UserController::class, 'getAllUser']);
-// });
+$router->group(['before' => 'auth', 'prefix'=>'/admin'], function($router) {
+    $router->get('/users',[App\Controllers\UserController::class, 'getAllUser']);
+    $router->get('/products',[App\Controllers\UserController::class, 'getAllUser']);
+    $router->get('/comments',[App\Controllers\UserController::class, 'getAllUser']);
+});
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $url);
