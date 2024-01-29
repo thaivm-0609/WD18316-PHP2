@@ -3,7 +3,7 @@ namespace App\Controllers;
 // require_once "app\models\Product.php";
 use App\Models\Product;
 
-class ProductController {
+class ProductController extends BaseController {
     protected $productModel;
 
     public function __construct() {
@@ -11,8 +11,10 @@ class ProductController {
     }
     public function getAllProduct() {
         $products = $this->productModel->listProduct();
-        include "app/views/products.php";
+        // include "app/views/products.php";
+        $this->render('products.products',compact('products'));
     }
+
     public function getTopTen() {
 
     }
@@ -20,7 +22,9 @@ class ProductController {
 
     public function edit($id) {
         $product = $this->productModel->getById($id);
-        include "app/views/edit.php";
+        // include "app/views/edit.php";
+        $this->render('products.edit',compact('product'));
+
     }
 
     public function update($id) {
