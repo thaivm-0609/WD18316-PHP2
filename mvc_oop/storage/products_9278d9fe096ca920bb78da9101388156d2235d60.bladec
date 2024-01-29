@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Danh sách product</title>
+</head>
+<body>
+ <a href="<?=route('/login')?>">Login</a>
+ <table>
+ <tr>
+ <th>ID</th>
+ <th>Name</th>
+ <th>Description</th>
+ <th>Price</th>
+ <th>Status</th>
+ <th>Action</th>
+ <tr>
+ <?php foreach ($products as $product) { ?>
+ <tr>
+ <td><?=$product['id'] ?></td>
+ <td><?=$product['name'] ?></td>
+ <td><?=$product['description'] ?></td>
+ <td><?=$product['price'] ?></td>
+ <td><?=$product['status'] ?></td>
+ <td>
+ <button><a href="<?=route('/products/'.$product['id'].'/edit')?>">Edit</a></button>
+ <button><a href="">Delete</a></button>
+ </td>
+ </tr>
+ <?php } ?>
+ </table>
+</body>
+</html>
